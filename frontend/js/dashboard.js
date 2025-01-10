@@ -25,7 +25,7 @@ function parseJwt(token) {
 
 async function updateUserProfile() {
   try {
-    const response = await fetch("http://localhost:5000/dashboard/profile", {
+    const response = await fetch("/dashboard/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -62,7 +62,7 @@ function createChatItem(chat, currentUserId) {
             <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
                 ${
                   pictureUrl
-                    ? `<img src="http://localhost:5000${pictureUrl}" alt="Profile" class="w-full h-full object-cover">`
+                    ? `<img src="${pictureUrl}" alt="Profile" class="w-full h-full object-cover">`
                     : `<i data-lucide="user" class="w-5 h-5 text-gray-600"></i>`
                 }
             </div>
@@ -81,7 +81,7 @@ function createChatItem(chat, currentUserId) {
 function updateDashboard() {
   const currentUserId = parseInt(parseJwt(token).id);
 
-  fetch("http://localhost:5000/dashboard", {
+  fetch("/dashboard", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -151,7 +151,7 @@ newChatBtn.addEventListener("click", async () => {
   overlay.classList.remove("hidden");
 
   try {
-    const response = await fetch("http://localhost:5000/dashboard/users", {
+    const response = await fetch("/dashboard/users", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -230,7 +230,7 @@ document.getElementById("clearChatsBtn").addEventListener("click", async () => {
     )
   ) {
     try {
-      const response = await fetch("http://localhost:5000/messages/clear-all", {
+      const response = await fetch("/messages/clear-all", {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

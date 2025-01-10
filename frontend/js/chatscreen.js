@@ -1,10 +1,9 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
-const socket = io("http://localhost:5000", {
+const socket = io({
   transports: ["websocket"],
   cors: {
-    origin: "http://127.0.0.1:5500",
     credentials: true,
   },
 });
@@ -41,7 +40,7 @@ const chatPartner = getUrlParameters();
 // Update the user profile section
 async function updateUserProfile() {
   try {
-    const response = await fetch("http://localhost:5000/dashboard/profile", {
+    const response = await fetch("/dashboard/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -94,7 +93,7 @@ function createMessageElement(data, isSent) {
 
   if (profilePicUrl) {
     // If there's a profile picture, show it
-    avatar.innerHTML = `<img src="http://localhost:5000${profilePicUrl}" alt="Profile" class="w-full h-full object-cover">`;
+    avatar.innerHTML = `<img src="${profilePicUrl}" alt="Profile" class="w-full h-full object-cover">`;
   } else {
     // If no profile picture, show default icon
     avatar.innerHTML =
@@ -139,14 +138,11 @@ function createMessageElement(data, isSent) {
 // Load previous messages
 async function loadPreviousMessages() {
   try {
-    const response = await fetch(
-      `http://localhost:5000/messages?partnerId=${chatPartner.userId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await fetch(`/messages?partnerId=${chatPartner.userId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
     const data = await response.json();
     const messagesContainer = document.getElementById("messages-container");

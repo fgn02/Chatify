@@ -6,7 +6,7 @@ const token = localStorage.getItem("token");
 
 async function updateUserProfile() {
   try {
-    const response = await fetch("http://localhost:5000/profile", {
+    const response = await fetch("/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -29,7 +29,7 @@ async function updateUserProfile() {
 // Load profile data
 async function loadProfile() {
   try {
-    const response = await fetch("http://localhost:5000/profile", {
+    const response = await fetch("/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -100,7 +100,7 @@ async function saveProfile() {
       display_name: displayName,
     };
 
-    const response = await fetch("http://localhost:5000/profile/update", {
+    const response = await fetch("/profile/update", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -150,7 +150,7 @@ async function handleProfilePicture() {
   // Load existing profile picture if available
   const userData = JSON.parse(localStorage.getItem("user"));
   if (userData?.picture_url) {
-    profilePicture.src = `http://localhost:5000${userData.picture_url}`;
+    profilePicture.src = `${userData.picture_url}`;
     profilePicture.classList.remove("hidden");
     defaultProfileIcon.classList.add("hidden");
     removeButton.classList.remove("hidden");
@@ -165,16 +165,13 @@ async function handleProfilePicture() {
       formData.append("profile_picture", file);
 
       try {
-        const response = await fetch(
-          "http://localhost:5000/profile/upload-picture",
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            body: formData,
-          }
-        );
+        const response = await fetch("/profile/upload-picture", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        });
 
         const data = await response.json();
 
@@ -208,15 +205,12 @@ async function handleProfilePicture() {
   // Handle remove picture
   removeButton.addEventListener("click", async () => {
     try {
-      const response = await fetch(
-        "http://localhost:5000/profile/remove-picture",
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch("/profile/remove-picture", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       const data = await response.json();
 
@@ -314,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load initial profile data
   async function loadProfile() {
     try {
-      const response = await fetch("http://localhost:5000/dashboard/profile", {
+      const response = await fetch("/dashboard/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -355,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/profile/update", {
+      const response = await fetch("/profile/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

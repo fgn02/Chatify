@@ -2,11 +2,11 @@ const mysql = require("mysql2");
 
 // Create a connection to the database
 const db = mysql.createConnection({
-  host: "sql12.freesqldatabase.com", // Your remote database host
-  user: "sql12756968", // Your database username
-  password: "5zxeyRddJx", // Your database password
-  database: "sql12756968", // Your database name
-  port: 3306, // Default MySQL port
+  host: process.env.DB_HOST, // Environment variable for database host
+  user: process.env.DB_USER, // Environment variable for database user
+  password: process.env.DB_PASSWORD, // Environment variable for database password
+  database: process.env.DB_NAME, // Environment variable for database name
+  port: process.env.DB_PORT || 3306, // Default MySQL port
 });
 
 // Connect to the database
