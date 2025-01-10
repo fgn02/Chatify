@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Chatify</title>
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Section -->
+      <div class="left-section">
+        <div class="signup-form">
+          <h2>Begin your journey</h2>
+
+          <form id="signupForm">
+            <div class="name-group">
+              <div class="form-group">
+                <label for="firstname">First name</label>
+                <input
+                  type="text"
+                  id="firstname"
+                  name="first_name"
+                  placeholder="Input first name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last name</label>
+                <input
+                  type="text"
+                  id="lastname"
+                  name="last_name"
+                  placeholder="Input last name"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example.email@gmail.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-input">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Enter at least 8+ characters"
+                  required
+                />
+                <button type="button" class="hide-btn">
+                  <img src="icons/hide-icon.svg" alt="Hide" />
+                </button>
+              </div>
+            </div>
+
+            <div class="terms-group">
+              <label class="checkbox-container">
+                <input type="checkbox" checked />
+                <span class="checkmark"></span>
+                <span class="terms-text"
+                  >By signing up, I agree with the Terms of Use & Privacy
+                  Policy</span
+                >
+              </label>
+            </div>
+
+            <button type="submit" class="register-btn">Register</button>
+
+            <div class="divider">
+              <span>OR</span>
+            </div>
+
+            <div class="social-buttons">
+              <button type="button" class="social-btn google">
+                <img src="icons/google-icon.svg" alt="Google" />
+              </button>
+              <button type="button" class="social-btn facebook">
+                <img src="icons/facebook-icon.svg" alt="Facebook" />
+              </button>
+              <button type="button" class="social-btn apple">
+                <img src="icons/apple-icon.svg" alt="Apple" />
+              </button>
+            </div>
+
+            <div class="login-prompt">
+              <a href="index.html">Returning user? Log in here</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <h2>Start Connecting Today</h2>
+        <div class="features">
+          <div class="feature">
+            <img src="icons/feature1.svg" alt="Feature 1" />
+            <p>Send and receive messages in real time with ease</p>
+          </div>
+          <div class="feature">
+            <img src="icons/feature2.svg" alt="Feature 2" />
+            <p>Create group chats to collaborate and share ideas seamlessly.</p>
+          </div>
+          <div class="feature">
+            <img src="icons/feature3.svg" alt="Feature 3" />
+            <p>
+              Personalize your experience with custom settings and profile
+              options
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = {
+            first_name: document.getElementById("firstname").value,
+            last_name: document.getElementById("lastname").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+          };
+
+          try {
+            const response = await fetch("http://localhost:5000/auth/signup", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+              // Store JWT token and user info in local storage
+              localStorage.setItem("token", result.token);
+              localStorage.setItem(
+                "user",
+                JSON.stringify({
+                  name: result.user.first_name + " " + result.user.last_name,
+                  id: result.user.id,
+                })
+              );
+
+              alert("Sign Up Successful!");
+              window.location.href = "dashboard.html";
+            } else {
+              alert(`Error: ${result.error}`);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred during sign up.");
+          }
+        });
+    </script>
+  </body>
+</html>

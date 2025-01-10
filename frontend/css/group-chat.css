@@ -1,0 +1,75 @@
+/* Inherit chat styles */
+.message {
+  max-width: 70%;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-sent {
+  flex-direction: row-reverse;
+  margin-left: auto;
+}
+
+.message-sent .message-bubble {
+  background-color: #818cf8;
+  color: white;
+  border-radius: 1rem 1rem 0 1rem;
+  margin-left: auto;
+}
+
+.message-received .message-bubble {
+  background-color: #f3f4f6;
+  border-radius: 1rem 1rem 1rem 0;
+}
+
+.message-bubble {
+  padding: 0.75rem 1rem;
+  max-width: fit-content;
+  background-color: #f3f4f6;
+  border-radius: 1rem 1rem 1rem 0;
+}
+
+.message-avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.message.sent .message-time {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
+}
+
+/* Scrollbar styling */
+#messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+#messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#messages-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+#messages-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

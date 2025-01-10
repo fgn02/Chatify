@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatify - Group Chat</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/group-chat.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="flex h-screen bg-gray-100">
+      <!-- Sidebar (exactly same as chat.html) -->
+      <div
+        class="w-64 bg-white h-screen border-r border-gray-200 flex flex-col"
+      >
+        <div class="p-4 border-b border-gray-200">
+          <h1 class="text-xl font-bold flex items-center gap-2">
+            <i data-lucide="message-square" class="w-5 h-5 text-indigo-600"></i>
+            Chatify
+          </h1>
+        </div>
+
+        <nav class="flex-1">
+          <div class="flex gap-2 p-2">
+            <a
+              href="dashboard.html"
+              class="px-4 py-1 text-sm text-gray-600 rounded-full hover:bg-gray-100"
+              >Chats</a
+            >
+            <button
+              class="px-4 py-1 text-sm bg-indigo-100 text-indigo-700 rounded-full font-medium"
+            >
+              Groups
+            </button>
+          </div>
+
+          <div class="p-2">
+            <div
+              class="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
+            >
+              <i data-lucide="users" class="w-5 h-5 text-gray-600"></i>
+              <span class="text-gray-700">Contacts</span>
+            </div>
+            <div
+              class="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
+            >
+              <i data-lucide="phone" class="w-5 h-5 text-gray-600"></i>
+              <span class="text-gray-700">Calls</span>
+            </div>
+          </div>
+        </nav>
+
+        <div class="p-4 border-t border-gray-200">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"
+            >
+              <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+            </div>
+            <div class="flex-1">
+              <p class="text-sm font-medium user-name">Loading...</p>
+              <p class="text-xs text-gray-500 cursor-pointer">View profile</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Area -->
+      <div class="flex-1 flex flex-col">
+        <!-- Chat Header -->
+        <div
+          class="bg-white border-b border-gray-200 p-4 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-3">
+            <div class="group-avatar-stack">
+              <div
+                class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center"
+              >
+                <i data-lucide="users" class="w-5 h-5 text-gray-600"></i>
+              </div>
+            </div>
+            <div>
+              <h2 class="font-medium">
+                <!-- Group name will be inserted here -->
+              </h2>
+              <p class="text-xs text-gray-500 member-count">
+                <!-- Member count will be inserted here -->
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-gray-100 rounded-full">
+              <i data-lucide="phone" class="w-5 h-5 text-gray-600"></i>
+            </button>
+            <button class="p-2 hover:bg-gray-100 rounded-full">
+              <i data-lucide="video" class="w-5 h-5 text-gray-600"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Make this wrapper overflow-hidden, then each column can scroll -->
+        <div class="flex-1 flex overflow-hidden">
+          <!-- Messages Container -->
+          <div class="flex-1 overflow-y-auto p-4" id="messages-container">
+            <!-- Messages will be inserted here dynamically -->
+          </div>
+
+          <!-- Members List -->
+          <div class="w-64 bg-white border-l border-gray-200 overflow-y-auto">
+            <div class="p-4">
+              <h3 class="font-medium mb-4">Members</h3>
+              <div class="space-y-2" id="members-container">
+                <!-- Members will be inserted here dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="bg-white border-t border-gray-200 p-4">
+          <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-gray-100 rounded-full">
+              <i data-lucide="plus" class="w-5 h-5 text-gray-600"></i>
+            </button>
+            <div class="flex-1 relative">
+              <input
+                type="text"
+                id="messageInput"
+                placeholder="Type a message..."
+                class="w-full px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <button class="p-2 hover:bg-gray-100 rounded-full">
+              <i data-lucide="smile" class="w-5 h-5 text-gray-600"></i>
+            </button>
+            <button class="p-2 hover:bg-gray-100 rounded-full" id="sendButton">
+              <i data-lucide="send" class="w-5 h-5 text-indigo-600"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/group-chat.js"></script>
+    <script src="js/utils.js"></script>
+  </body>
+</html>

@@ -1,0 +1,380 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 100vh;
+}
+
+/* Chat Container */
+.chat-container {
+    display: flex;
+    height: 100vh;
+    background-color: white;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar-header .logo img {
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar-header .logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin: 0;
+}
+
+.nav-items {
+    padding: 0.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    color: #4b5563;
+    transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+    background-color: #f3f4f6;
+}
+
+/* Profile Section */
+.profile-section {
+    padding: 0.75rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: 500;
+}
+
+.profile-status {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Main Chat Area */
+.main-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.username {
+    font-weight: 600;
+}
+
+.chat-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-button {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #4b5563;
+}
+
+.icon-button:hover {
+    background-color: #f3f4f6;
+}
+
+/* Messages Area */
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin-bottom: 1rem;
+}
+
+.message.sent {
+    flex-direction: row-reverse;
+}
+
+.message-content {
+    max-width: 70%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #f3f4f6;
+}
+
+.message.sent .message-content {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* Input Area */
+.input-container {
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message-input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    outline: none;
+}
+
+.message-input:focus {
+    border-color: #2563eb;
+}
+
+.send-button {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Members Panel */
+.members-panel {
+    width: 240px;
+    border-left: 1px solid #e5e7eb;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.members-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.members-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+}
+
+.member-item:hover {
+    background-color: #f3f4f6;
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.member-name {
+    font-weight: 500;
+}
+
+.online-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #22c55e;
+}
+
+.add-participant {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.add-participant:hover {
+    background-color: #1d4ed8;
+}
+
+/* Toggle Members Button */
+.toggle-members {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 10;
+}
+
+/* Hide members panel by default on mobile */
+@media (max-width: 768px) {
+    .members-panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .members-panel.active {
+        transform: translateX(0);
+    }
+}
+
+/* Update avatar styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 11px;
+    height: 11px;
+    background: #1DD75B;
+    border: 1.5px solid #ffffff;
+    border-radius: 50%;
+}
+
+.avatar-stack {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%;
+    background-color: #2563eb; /* Background color for initials */
+    color: white; /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bold;
+    margin-left: -10px; /* Overlap effect */
+}
+
+.navbar-avatar {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%;
+    margin-left: -10px; /* Overlap effect */
+}
+
+.navbar-avatar.initials {
+    background-color: #2563eb; /* Background color for initials */
+    color: white; /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+

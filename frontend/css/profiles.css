@@ -1,0 +1,55 @@
+/* Profile specific styles */
+.profile-picture-upload {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-picture-upload input[type="file"] {
+    display: none;
+}
+
+/* Toggle switch animations */
+.toggle-switch span {
+    transition: transform 0.2s ease-in-out;
+}
+
+.toggle-switch.active span {
+    transform: translateX(1.25rem);
+}
+
+/* Form focus states */
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Hover effects */
+button:hover {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Profile section spacing */
+.profile-section:not(:last-child) {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Sidebar scrolling */
+nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+nav::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
