@@ -4,7 +4,7 @@ lucide.createIcons();
 const socket = io("https://chatify-production-7bae.up.railway.app", {
   transports: ["websocket"],
   cors: {
-    origin: "http://127.0.0.1:5500",
+    origin: "https://chatify-beryl.vercel.app",
     credentials: true,
   },
 });
