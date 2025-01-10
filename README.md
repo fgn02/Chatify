@@ -3,7 +3,7 @@
 ## Overview
 Chatify is a full-featured real-time chat application built with Vanilla JavaScript, Node.js, and Socket.IO. The project uses MySQL for database management and offers a sleek and user-friendly interface. Users can register, sign in, and interact with each other through messages, attachments, and emojis. It also includes user settings for personalization and a dashboard for recent chats and group chats. Future updates will include a call feature.View at: https://chatify-beryl.vercel.app/
 
-![Sample GIF](https://i.ibb.co.com/CQgmXm0/giphy.gif)
+![Sample GIF](https://i.ibb.co.com/BZDPNMd/2025-01-11-02-08-52.gif)
 
 ## Project Description
 
