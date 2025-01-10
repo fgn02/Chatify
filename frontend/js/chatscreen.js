@@ -1,9 +1,10 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
-const socket = io({
+const socket = io("https://chatify-production-7bae.up.railway.app", {
   transports: ["websocket"],
   cors: {
+    origin: "http://127.0.0.1:5500",
     credentials: true,
   },
 });
@@ -40,11 +41,14 @@ const chatPartner = getUrlParameters();
 // Update the user profile section
 async function updateUserProfile() {
   try {
-    const response = await fetch("/dashboard/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/dashboard/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch user profile");
@@ -93,7 +97,7 @@ function createMessageElement(data, isSent) {
 
   if (profilePicUrl) {
     // If there's a profile picture, show it
-    avatar.innerHTML = `<img src="${profilePicUrl}" alt="Profile" class="w-full h-full object-cover">`;
+    avatar.innerHTML = `<img src="https://chatify-production-7bae.up.railway.app${profilePicUrl}" alt="Profile" class="w-full h-full object-cover">`;
   } else {
     // If no profile picture, show default icon
     avatar.innerHTML =
@@ -138,11 +142,14 @@ function createMessageElement(data, isSent) {
 // Load previous messages
 async function loadPreviousMessages() {
   try {
-    const response = await fetch(`/messages?partnerId=${chatPartner.userId}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      `https://chatify-production-7bae.up.railway.app/messages?partnerId=${chatPartner.userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const data = await response.json();
     const messagesContainer = document.getElementById("messages-container");

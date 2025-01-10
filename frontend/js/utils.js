@@ -26,7 +26,7 @@ function updateProfilePicture(pictureUrl) {
     if (pictureUrl) {
       // Create and add image
       const img = document.createElement("img");
-      img.src = `http://localhost:5000${pictureUrl}`;
+      img.src = `https://chatify-production-7bae.up.railway.app${pictureUrl}`;
       img.alt = "Profile Picture";
       img.className = "w-full h-full object-cover rounded-full";
       sidebarProfileContainer.appendChild(img);

@@ -6,11 +6,14 @@ const token = localStorage.getItem("token");
 
 async function updateUserProfile() {
   try {
-    const response = await fetch("/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch user profile");
@@ -29,11 +32,14 @@ async function updateUserProfile() {
 // Load profile data
 async function loadProfile() {
   try {
-    const response = await fetch("/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       const data = await response.json();
@@ -100,14 +106,17 @@ async function saveProfile() {
       display_name: displayName,
     };
 
-    const response = await fetch("/profile/update", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(updateData),
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/profile/update",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updateData),
+      }
+    );
 
     const data = await response.json();
 
@@ -150,7 +159,7 @@ async function handleProfilePicture() {
   // Load existing profile picture if available
   const userData = JSON.parse(localStorage.getItem("user"));
   if (userData?.picture_url) {
-    profilePicture.src = `${userData.picture_url}`;
+    profilePicture.src = `https://chatify-production-7bae.up.railway.app${userData.picture_url}`;
     profilePicture.classList.remove("hidden");
     defaultProfileIcon.classList.add("hidden");
     removeButton.classList.remove("hidden");
@@ -165,13 +174,16 @@ async function handleProfilePicture() {
       formData.append("profile_picture", file);
 
       try {
-        const response = await fetch("/profile/upload-picture", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        });
+        const response = await fetch(
+          "https://chatify-production-7bae.up.railway.app/profile/upload-picture",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+          }
+        );
 
         const data = await response.json();
 
@@ -186,7 +198,7 @@ async function handleProfilePicture() {
           const defaultProfileIcon =
             document.getElementById("defaultProfileIcon");
 
-          profilePicture.src = `http://localhost:5000${data.picture_url}`;
+          profilePicture.src = `https://chatify-production-7bae.up.railway.app${data.picture_url}`;
           profilePicture.classList.remove("hidden");
           defaultProfileIcon.classList.add("hidden");
 
@@ -205,12 +217,15 @@ async function handleProfilePicture() {
   // Handle remove picture
   removeButton.addEventListener("click", async () => {
     try {
-      const response = await fetch("/profile/remove-picture", {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://chatify-production-7bae.up.railway.app/profile/remove-picture",
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -308,11 +323,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load initial profile data
   async function loadProfile() {
     try {
-      const response = await fetch("/dashboard/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://chatify-production-7bae.up.railway.app/dashboard/profile",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = await response.json();
 
       // Populate form fields
@@ -349,14 +367,17 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("/profile/update", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://chatify-production-7bae.up.railway.app/profile/update",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 

@@ -24,11 +24,14 @@ function parseJwt(token) {
 
 async function updateUserProfile() {
   try {
-    const response = await fetch("http://localhost:5000/dashboard/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/dashboard/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch user profile");
@@ -77,7 +80,7 @@ function createGroupItem(group) {
 }
 
 function updateDashboard() {
-  fetch("http://localhost:5000/groups/dashboard", {
+  fetch("https://chatify-production-7bae.up.railway.app/groups/dashboard", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -139,11 +142,14 @@ createGroupBtn.addEventListener("click", async () => {
   overlay.classList.remove("hidden");
 
   try {
-    const response = await fetch("http://localhost:5000/dashboard/users", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/dashboard/users",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) throw new Error("Failed to fetch users");
 
@@ -184,17 +190,20 @@ createGroupSubmitBtn.addEventListener("click", async () => {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/groups/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        name: groupName,
-        members: selectedUsers,
-      }),
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/groups/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: groupName,
+          members: selectedUsers,
+        }),
+      }
+    );
 
     const result = await response.json();
 

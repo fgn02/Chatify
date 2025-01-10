@@ -25,11 +25,14 @@ function parseJwt(token) {
 
 async function updateUserProfile() {
   try {
-    const response = await fetch("/dashboard/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/dashboard/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch user profile");
@@ -62,7 +65,7 @@ function createChatItem(chat, currentUserId) {
             <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
                 ${
                   pictureUrl
-                    ? `<img src="${pictureUrl}" alt="Profile" class="w-full h-full object-cover">`
+                    ? `<img src="https://chatify-production-7bae.up.railway.app${pictureUrl}" alt="Profile" class="w-full h-full object-cover">`
                     : `<i data-lucide="user" class="w-5 h-5 text-gray-600"></i>`
                 }
             </div>
@@ -81,7 +84,7 @@ function createChatItem(chat, currentUserId) {
 function updateDashboard() {
   const currentUserId = parseInt(parseJwt(token).id);
 
-  fetch("/dashboard", {
+  fetch("https://chatify-production-7bae.up.railway.app/dashboard", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -151,11 +154,14 @@ newChatBtn.addEventListener("click", async () => {
   overlay.classList.remove("hidden");
 
   try {
-    const response = await fetch("/dashboard/users", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/dashboard/users",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) throw new Error("Failed to fetch users");
 
@@ -230,12 +236,15 @@ document.getElementById("clearChatsBtn").addEventListener("click", async () => {
     )
   ) {
     try {
-      const response = await fetch("/messages/clear-all", {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://chatify-production-7bae.up.railway.app/messages/clear-all",
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.ok) {
         // Clear the chat list UI

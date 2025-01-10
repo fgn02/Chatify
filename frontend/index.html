@@ -98,13 +98,16 @@
           const password = document.getElementById("password").value;
 
           try {
-            const response = await fetch("/auth/signin", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ email, password }),
-            });
+            const response = await fetch(
+              "https://chatify-production-7bae.up.railway.app/auth/signin",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+              }
+            );
 
             const result = await response.json();
 
