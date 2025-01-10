@@ -13,10 +13,10 @@ function updateSidebarUserName() {
 // Initialize Lucide icons
 lucide.createIcons();
 
-const socket = io("http://localhost:5000", {
+const socket = io("https://chatify-production-7bae.up.railway.app", {
   transports: ["websocket"],
   cors: {
-    origin: "http://127.0.0.1:5500",
+    origin: "https://chatify-beryl.vercel.app",
     credentials: true,
   },
 });
@@ -49,11 +49,14 @@ function updateGroupName() {
 
 async function updateUserProfile() {
   try {
-    const response = await fetch("http://localhost:5000/dashboard/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://chatify-production-7bae.up.railway.app/dashboard/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch user profile");
@@ -72,7 +75,7 @@ async function updateUserProfile() {
 async function loadGroupMembers() {
   try {
     const response = await fetch(
-      `http://localhost:5000/groups/${groupInfo.groupId}/members`,
+      `https://chatify-production-7bae.up.railway.app/groups/${groupInfo.groupId}/members`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -164,7 +167,7 @@ function createMessageElement(data, isSent) {
 async function loadGroupMessages() {
   try {
     const response = await fetch(
-      `http://localhost:5000/groups/${groupInfo.groupId}/messages`,
+      `https://chatify-production-7bae.up.railway.app/groups/${groupInfo.groupId}/messages`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
