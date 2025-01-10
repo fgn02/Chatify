@@ -2,10 +2,11 @@ const mysql = require("mysql2");
 
 // Create a connection to the database
 const db = mysql.createConnection({
-  host: process.env.DB_HOST, // Host provided by Railway
-  user: process.env.DB_USER, // Username provided by Railway
-  password: process.env.DB_PASSWORD, // Password provided by Railway
-  database: process.env.DB_NAME, // Database name provided by Railway
+  host: "sql12.freesqldatabase.com", // Your remote database host
+  user: "sql12756968", // Your database username
+  password: "5zxeyRddJx", // Your database password
+  database: "sql12756968", // Your database name
+  port: 3306, // Default MySQL port
 });
 
 // Connect to the database
